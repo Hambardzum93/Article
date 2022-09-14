@@ -1,0 +1,65 @@
+nvm use 14.19.0
+
+-----------------------------------------------------
+tsconfig.json add
+    "compilerOptions": {
+      "strictPropertyInitialization": false,
+      "strictNullChecks": false,
+      "noPropertyAccessFromIndexSignature": false,
+      "noImplicitReturns": false,
+    }
+    "angularCompilerOptions": {
+      "allowSyntheticDefaultImports": true,
+    }
+
+angular.json add
+  "cli": {
+      "schematicCollections": "@angular-eslint/schematics"
+  }
+
+    npm i ngx-quill
+    npm install quill
+    npm i @types/quill@1
+
+    npm i @angular/fire
+    npm i firebase
+-----------------------------------------------------
+admin:
+login: ham@gmail.com
+password: 123456789
+userId: lanx1GfwhLhQkwdwibrD428mQQ02
+
+login: h@gmail.com
+password: 654321
+userId: f4hQjKgmyRUCGN76iBBPCj13Oid2
+-----------------------------------------------------
+Base Urls
+fbUrlAuth: https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=[API_KEY]
+apiKey: AIzaSyDrYiLpxB8_zgBOaoMLxoRYIs9I44fkp1s
+
+Firebase database url
+fbDbUrl: 'https://blog22-ef40b-default-rtdb.europe-west1.firebasedatabase.app'
+-----------------------------------------------------
+firebase Config
+
+// Import the functions you need from the SDKs you need
+import { initializeApp } from "firebase/app";
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
+
+// Your web app's Firebase configuration
+const firebaseConfig = {
+  apiKey: "AIzaSyDrYiLpxB8_zgBOaoMLxoRYIs9I44fkp1s",
+  authDomain: "blog22-ef40b.firebaseapp.com",
+  projectId: "blog22-ef40b",
+  storageBucket: "blog22-ef40b.appspot.com",
+  messagingSenderId: "177965351932",
+  appId: "1:177965351932:web:7ede261c00c60106b66879"
+};
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+-----------------------------------------------------
+//Deploy
+
+sudo npm install -g firebase-tools

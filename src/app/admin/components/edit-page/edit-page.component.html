@@ -1,0 +1,45 @@
+
+<div *ngIf="form; else Loading" class="parent">
+  <h1 class="text-liberty-dark">Edit post</h1>
+  <form [formGroup]="form" (ngSubmit)="submit()">
+    <div
+      class="form-control"
+      [ngClass]="{invalid: form.get('title').touched && form.get('title').invalid}"
+    >
+      <label for="title">Post title:</label>
+      <input id="title" type="text" formControlName="title">
+      <div
+        class="validation"
+        *ngIf="form.get('title').touched && form.get('title').invalid"
+      >
+        <small *ngIf="form.get('title').errors.required">Enter post title</small>
+      </div>
+    </div>
+
+    <label for="text">Post text:</label>
+    <div class="form-control">
+      <quill-editor formControlName="text" id="text"></quill-editor>
+      <!--       <textarea-->
+<!--         id="text"-->
+<!--         formControlName="text"-->
+<!--         rows="4" cols="50" placeholder="Write here...">-->
+<!--      </textarea>-->
+    </div>
+
+    <button
+      class="btn btn-primary"
+      type="submit"
+      [disabled]="form.invalid || submittedFlag"
+    >
+      Update
+    </button>
+
+  </form>
+</div>
+
+<ng-template #Loading>
+  <div class="loader">
+    <h2 class="text-center">Loading...</h2>
+    <img src="../../../../assets/Spinner-2.gif" alt="loading">
+  </div>
+</ng-template>

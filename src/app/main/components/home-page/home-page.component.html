@@ -1,0 +1,21 @@
+<div
+  *ngIf="posts$ | async as posts; else loadingBlock"
+  class="posts wrapper"
+>
+  <div class="form-control">
+    <input type="text" placeholder="Post author search..." [(ngModel)]="searchAuthor" >
+  </div>
+
+
+  <app-post
+    *ngFor="let post of posts | authorSearch:searchAuthor"
+    [post]="post"
+  ></app-post>
+</div>
+
+<ng-template #loadingBlock>
+  <div  class="loader">
+    <h2 class="text-center">Loading Posts...</h2>
+    <img src="../../../../assets/Spinner-2.gif" alt="loading">
+  </div>
+</ng-template>

@@ -1,0 +1,49 @@
+<div *ngIf="postArr.length; else LoadingBlock">
+
+  <div class="form-control">
+    <input type="text" placeholder="Find title..." [(ngModel)]="searchStr" >
+  </div>
+
+  <table>
+    <thead>
+    <tr>
+      <th>#</th>
+      <th>Author</th>
+      <th>Title</th>
+      <th>Date</th>
+      <th>Actions</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <tr *ngFor="let post of postArr | search: searchStr; let idx = index">
+      <td>{{idx + 1}}</td>
+      <td>{{post.author}}</td>
+      <td>{{post.title}}</td>
+      <td>{{post.date | date:'medium':null:'en'}}</td>
+      <td>
+        <button
+          class="btn btn-link open"
+          [routerLink]="['/admin', 'post', post.id, 'edit']"
+        >
+          Open
+        </button>
+        <a (click)="removePost(post?.id)">Delete</a>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+
+<ng-template #LoadingBlock>
+  <div class="no-posts">
+    <h2 >Currently there are no posts</h2>
+
+  </div>
+  <div  class="loader">
+    <h2 class="text-center">Loading...</h2>
+    <img src="../../../../assets/Spinner-2.gif" alt="loading">
+  </div>
+
+
+</ng-template>
